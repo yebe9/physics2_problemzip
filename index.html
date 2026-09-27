@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="서울대학교 공과대학 학생회 새결 교육국의 물리학 2 대표문항 및 풀이. 할리데이 21~40장 문항 번호와 팁·해설 PDF를 제공합니다.">
+    <title>물리학 2 대표문항 및 풀이 제공</title>
+    <style>
+        :root {
+            --primary-color: #1e88e5;
+            --bg-color: #f7fafd;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+            background: var(--bg-color);
+            word-break: keep-all;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #e0f2f1 100%);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        header h1 { font-size: 1.8rem; margin-bottom: 10px; color: #0d47a1; }
+        header p { font-weight: bold; color: #666; font-size: 0.95rem; }
+        .intro-section {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-left: 6px solid var(--primary-color);
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        .book-img { width: 180px; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); flex-shrink: 0; }
+        .intro-text h2 { color: #0d47a1; margin-top: 0; }
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 20px;
+        }
+        .chapter-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid transparent;
+            overflow-wrap: anywhere;
+        }
+        .chapter-card:hover { transform: translateY(-8px); border-color: var(--primary-color); box-shadow: 0 10px 20px rgba(13,71,161,0.12); }
+        .chapter-card h3 { margin: 0; font-size: 1.1rem; color: #0d47a1; }
+        .chapter-card:focus-visible, .back-btn:focus-visible, .btn-download:focus-visible { outline: 3px solid #0d47a1; outline-offset: 5px; }
+        [hidden] { display: none !important; }
+        #detail-view { background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        #detail-title { color: #0d47a1; overflow-wrap: anywhere; }
+        .back-btn { display: inline-block; margin-bottom: 20px; padding: 0; border: 0; background: none; font: inherit; color: #1565c0; font-weight: bold; cursor: pointer; }
+        .problem-list { background: #f9f9f9; padding: 25px; border-radius: 10px; margin: 20px 0; }
+        .problem-item { margin-bottom: 12px; border-bottom: 1px solid #e5e7eb; padding-bottom: 12px; }
+        .problem-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .problem-numbers { font-weight: 600; color: #444; word-break: normal; }
+        .download-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; padding-top: 20px; border-top: 2px dashed #eee; }
+        .btn-download { display: inline-block; background: var(--primary-color); color: #fff; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; min-width: 220px; text-align: center; box-sizing: border-box; }
+        .btn-download:hover { background: #1565c0; }
+        footer { text-align: center; padding: 50px 0; color: #666; font-size: 0.9rem; }
+        @media (max-width: 600px) {
+            body { padding: 12px; }
+            .container { padding: 8px; }
+            header { padding: 30px 18px; }
+            header h1 { font-size: 1.5rem; }
+            .intro-section { flex-direction: column; text-align: center; padding: 22px 18px; }
+            .chapter-card { margin-bottom: 0; }
+            #detail-view { padding: 24px 18px; }
+            .problem-list { padding: 18px; }
+            .download-container { flex-direction: column; }
+            .btn-download { width: 100%; min-width: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .chapter-card { transition: none; }
+            .chapter-card:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>✒️물리학 2 대표문항 및 풀이 제공</h1>
+        <p>제38대 서울대학교 공과대학 학생회 [새결] 교육국</p>
+    </header>
+    <main>
+        <div id="main-view">
+            <section class="intro-section" aria-labelledby="intro-title">
+                <img src="img/cover11.jpg" alt="할리데이 일반물리학 11판 한글판 표지" class="book-img" width="200" height="260">
+                <div class="intro-text">
+                    <h2 id="intro-title">교재 안내</h2>
+                    <p>본 자료는 <strong>Fundamentals of Physics Extended 10th, 11th edition(한글판)</strong> 교재를 바탕으로 제작되었습니다.</p>
+                    <p>각 단원별 <strong>Problems</strong> 문항 중 개념을 잘 잡을 수 있는 문항, 어려운 문항을 선정하여 풀이 팁과 해설을 배포합니다.</p>
+                    <p>단원을 선택하면 상세 문항 번호 확인 및 자료 다운로드가 가능합니다.</p>
+                </div>
+            </section>
+            <div class="chapter-grid" aria-label="단원 선택">
+                <div class="chapter-card" role="button" tabindex="0" data-chapter="1" onclick="showDetail(1)"><h3>21. Electric Charge ~ 23. Gauss' Law</h3></div>
+                <div class="chapter-card" role="button" tabindex="0" data-chapter="2" onclick="showDetail(2)"><h3>24. Electric Potential ~ 25. Capacitance</h3></div>
+                <div class="chapter-card" role="button" tabindex="0" data-chapter="3" onclick="showDetail(3)"><h3>26. Current and Resistance ~ 27. Circuits</h3></div>
+                <div class="chapter-card" role="button" tabindex="0" data-chapter="4" onclick="showDetail(4)"><h3>28. Magnetic Fields ~ 29. Magnetic Fields Due to Currents</h3></div>
+                <div class="chapter-card" role="button" tabindex="0" data-chapter="5" onclick="showDetail(5)"><h3>30. Induction and Inductance ~ 33. Electromagnetic Waves</h3></div>
+                <div class="chapter-card" role="button" tabindex="0" data-chapter="6" onclick="showDetail(6)"><h3>34. Images ~ 36. Diffraction</h3></div>
+                <div class="chapter-card" role="button" tabindex="0" data-chapter="7" onclick="showDetail(7)"><h3>37. Relativity ~ 40. All About Atoms</h3></div>
+            </div>
+        </div>
+        <section id="detail-view" aria-labelledby="detail-title" hidden>
+            <button type="button" class="back-btn" onclick="showMain()">← 뒤로 가기</button>
+            <h2 id="detail-title" tabindex="-1">단원 제목</h2>
+            <div class="problem-list" id="problem-content"></div>
+            <div class="download-container" id="download-area"></div>
+        </section>
+        <noscript><p>단원별 문항 번호와 다운로드 버튼을 보려면 브라우저에서 JavaScript를 활성화해주세요.</p></noscript>
+    </main>
+    <footer>
+        <p>&copy; 2026 제38대 서울대학교 공과대학 학생회 [새결] 교육국</p>
+        <p>문의 및 오류 제기: 서울대학교 공과대학 학생회 카카오톡 채널</p>
+    </footer>
+</div>
+<script>
+    // 문항 번호는 배포 PDF 본문 기준입니다. 21장 20번은 요청에 따라 제외했습니다.
+    const data = {
+        1: {
+            title: "21. Electric Charge ~ 23. Gauss' Law",
+            problems: [
+                "21장: 1, 2, 3, 4, 5, 6, 7, 8, 9, 16, 17, 18, 19, 29, 30, 33, 34, 35, 45, 46, 47",
+                "22장: 7, 8, 17, 18, 20, 21, 29, 30, 40, 41, 42, 46, 49, 50, 51, 52",
+                "23장: 4, 7, 8, 22, 23, 28, 29, 30, 40, 41, 42, 47, 48, 49, 58, 59"
+            ],
+            files: [{ name: "팁 및 해설 다운로드", link: "downloads/할리데이 21-23 팁 및 해설.pdf" }]
+        },
+        2: {
+            title: "24. Electric Potential ~ 25. Capacitance",
+            problems: [
+                "24장: 2, 4, 9, 14, 20, 26, 28, 51, 55, 57",
+                "25장: 2, 7, 10, 23, 24, 29, 38, 46"
+            ],
+            files: [{ name: "팁 및 해설 다운로드", link: "downloads/할리데이 24-25 팁 및 해설.pdf" }]
+        },
+        3: {
+            title: "26. Current and Resistance ~ 27. Circuits",
+            problems: [
+                "26장: 8, 12, 13, 20, 27, 37, 50, 51, 54, 55",
+                "27장: 3, 6, 7, 11, 12, 14, 17, 38, 42, 43"
+            ],
+            files: [{ name: "팁 및 해설 다운로드", link: "downloads/할리데이 26-27 팁 및 해설.pdf" }]
+        },
+        4: {
+            title: "28. Magnetic Fields ~ 29. Magnetic Fields Due to Currents",
+            problems: [
+                "28장: 6, 13, 29, 32, 35, 44, 53, 54, 56, 60",
+                "29장: 2, 15, 18, 23, 30, 34, 45, 47, 55, 58"
+            ],
+            files: [{ name: "팁 및 해설 다운로드", link: "downloads/할리데이 28-29 팁 및 해설.pdf" }]
+        },
+        5: {
+            title: "30. Induction and Inductance ~ 33. Electromagnetic Waves",
+            problems: [
+                "30장: 2, 8, 12, 20, 26, 33, 34, 40, 56, 58, 61",
+                "31장: 2, 4, 6, 10, 15, 17, 22, 28, 31, 42, 45, 59",
+                "32장: 1, 3, 9, 10, 11, 26, 27, 31, 45, 54",
+                "33장: 1, 3, 9, 12, 33, 34, 45, 47, 56"
+            ],
+            files: [{ name: "팁 및 해설 다운로드", link: "downloads/할리데이 30-33 팁 및 해설.pdf" }]
+        },
+        6: {
+            title: "34. Images ~ 36. Diffraction",
+            problems: [
+                "34장: 7, 8, 21, 23, 36, 53, 75, 79, 87",
+                "35장: 3, 11, 13, 15, 19, 23, 27, 39, 43, 53",
+                "36장: 3, 9, 17, 23, 25, 33, 49, 61"
+            ],
+            files: [{ name: "팁 및 해설 다운로드", link: "downloads/할리데이 34-36 팁 및 해설.pdf" }]
+        },
+        7: {
+            title: "37. Relativity ~ 40. All About Atoms",
+            problems: [
+                "37장: 5, 9, 12, 14, 16, 21, 27, 33",
+                "38장: 1, 2, 7, 8, 12, 16, 20, 25",
+                "39장: 1, 2, 4, 5, 8, 18, 19, 24",
+                "40장: 2, 3, 6, 8, 10, 13, 15, 31"
+            ],
+            files: [{ name: "팁 및 해설 다운로드", link: "downloads/할리데이 37-40 팁 및 해설.pdf" }]
+        }
+    };
+
+    let activeCard = null;
+
+    function showDetail(id) {
+        const item = data[id];
+        if (!item) return;
+        activeCard = document.querySelector(`[data-chapter="${id}"]`);
+        document.getElementById('main-view').hidden = true;
+        document.getElementById('detail-view').hidden = false;
+        const title = document.getElementById('detail-title');
+        title.textContent = item.title;
+
+        const problemContent = document.getElementById('problem-content');
+        problemContent.replaceChildren();
+        item.problems.forEach(problem => {
+            const [chapter, numbers] = problem.split(':');
+            const row = document.createElement('div');
+            row.className = 'problem-item';
+            const label = document.createElement('strong');
+            label.textContent = `${chapter}: `;
+            const list = document.createElement('span');
+            list.className = 'problem-numbers';
+            list.textContent = numbers.trim();
+            row.append(label, list);
+            problemContent.append(row);
+        });
+
+        const downloadArea = document.getElementById('download-area');
+        downloadArea.replaceChildren();
+        item.files.forEach(file => {
+            const link = document.createElement('a');
+            link.href = file.link;
+            link.className = 'btn-download';
+            link.download = file.link.split('/').pop();
+            link.textContent = file.name;
+            downloadArea.append(link);
+        });
+        title.focus({ preventScroll: true });
+        window.scrollTo(0, 0);
+    }
+
+    function showMain() {
+        document.getElementById('main-view').hidden = false;
+        document.getElementById('detail-view').hidden = true;
+        if (activeCard) activeCard.focus({ preventScroll: true });
+        window.scrollTo(0, 0);
+    }
+
+    document.querySelectorAll('.chapter-card').forEach(card => {
+        card.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                showDetail(card.dataset.chapter);
+            }
+        });
+    });
+</script>
+</body>
+</html>
