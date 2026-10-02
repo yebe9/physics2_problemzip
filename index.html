@@ -207,7 +207,22 @@
 
     let activeCard = null;
 
+    function historyChapter(state = window.history.state) {
+        const id = state?.physics2Chapter;
+        return Number.isInteger(id) && Object.prototype.hasOwnProperty.call(data, id) ? id : null;
+    }
+
     function showDetail(id) {
+        id = Number(id);
+        if (!Number.isInteger(id) || !Object.prototype.hasOwnProperty.call(data, id)) return;
+        // 단원 선택을 방문 기록에 남겨 브라우저 뒤로/앞으로 가기와 화면을 맞춥니다.
+        if (historyChapter() !== id) {
+            window.history.pushState({ physics2Chapter: id }, '');
+        }
+        renderDetail(id);
+    }
+
+    function renderDetail(id) {
         const item = data[id];
         if (!item) return;
         activeCard = document.querySelector(`[data-chapter="${id}"]`);
@@ -246,10 +261,32 @@
     }
 
     function showMain() {
+        if (historyChapter() !== null) {
+            window.history.back();
+        } else {
+            renderMain();
+        }
+    }
+
+    function renderMain() {
         document.getElementById('main-view').hidden = false;
         document.getElementById('detail-view').hidden = true;
         if (activeCard) activeCard.focus({ preventScroll: true });
         window.scrollTo(0, 0);
+    }
+
+    window.addEventListener('popstate', event => {
+        const id = historyChapter(event.state);
+        if (id !== null) renderDetail(id);
+        else renderMain();
+    });
+
+    // 새로고침한 상세 화면도 현재 방문 기록에서 복원합니다.
+    const initialChapter = historyChapter();
+    if (initialChapter !== null) {
+        renderDetail(initialChapter);
+    } else {
+        window.history.replaceState({ ...window.history.state, physics2Chapter: null }, '');
     }
 
     document.querySelectorAll('.chapter-card').forEach(card => {

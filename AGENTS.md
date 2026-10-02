@@ -8,7 +8,9 @@
 ## 구조
 
 - `index.html` — 전체 UI. `#main-view`(단원 카드 그리드)와 `#detail-view`(단원 상세) 두 개의 뷰를
-  JS로 토글하는 방식(별도 라우팅 없음, SPA 아님). 모든 단원 데이터는 `<script>` 내부의 `data` 객체에
+  JS로 토글하며 History API로 브라우저 뒤로/앞으로 가기와 동기화합니다(별도 URL 라우팅 없음).
+  상세 진입은 `pushState`, 화면 복원은 `popstate`로 처리하며 내부 뒤로 가기도 `history.back()`을 사용합니다.
+  모든 단원 데이터는 `<script>` 내부의 `data` 객체에
   하드코딩되어 있습니다.
 - `img/` — 교재 표지 등 정적 이미지. GitHub Pages의 저장소 하위 경로에서도 작동하도록
   `img/<file>` 형태의 상대 경로로 참조합니다. Netlify 전용 Image CDN 주소는 사용하지 않습니다.
